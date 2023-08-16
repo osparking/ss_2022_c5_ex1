@@ -16,7 +16,10 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http.httpBasic()
-				.and().authorizeRequests().anyRequest().authenticated() //authorization
+				.and()
+				.authorizeRequests()
+					.anyRequest() // matcher method
+						.authenticated() //authorization rule
 				.and().build();
 	}
 	
