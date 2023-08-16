@@ -23,7 +23,8 @@ public class SecurityConfig {
 	UserDetailsService userDetailsService() {
 		var uds = new InMemoryUserDetailsManager();
 		var u1 = User.withUsername("park")
-				.password("1234").authorities("read").build();
+				.password(passwordEncoder().encode("1234"))
+				.authorities("read").build();
 		
 		uds.createUser(u1);
 		return uds;
