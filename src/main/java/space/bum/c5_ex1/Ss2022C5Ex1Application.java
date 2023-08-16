@@ -1,4 +1,4 @@
-package space.bum;
+package space.bum.c5_ex1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
