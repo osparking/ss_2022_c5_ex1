@@ -9,5 +9,10 @@ public class DemoController {
 	String demo() {
 		return "시범!";
 	}
+	
+	@GetMapping("/memo")
+	String memo() {
+		return "메모!";
+	}
 
 }
