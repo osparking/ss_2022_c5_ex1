@@ -18,8 +18,8 @@ public class SecurityConfig {
 		return http.httpBasic()
 				.and()
 				.authorizeRequests()
-					.anyRequest() // matcher method
-						.hasRole("ADMIN")
+					.anyRequest()
+					.access("isAuthenticated() and hasAuthority('ROLE_ADMIN')") //SpEL
 				.and().build();
 		// matcher method + authori' rule
 		// 1. which matcher method can we use and how
