@@ -33,7 +33,13 @@ public class SecurityConfig {
 				.password(passwordEncoder().encode("1234"))
 				.authorities("read").build();
 		
-		uds.createUser(u1);		
+		uds.createUser(u1);
+		
+		var u2 = User.withUsername("will")
+				.password(passwordEncoder().encode("1234"))
+				.authorities("write").build();
+		
+		uds.createUser(u2);
 		return uds;
 	}
 	
