@@ -19,7 +19,7 @@ public class SecurityConfig {
 				.and()
 				.authorizeRequests()
 					.anyRequest() // matcher method
-						.hasAuthority("read")
+						.hasRole("ADMIN")
 				.and().build();
 		// matcher method + authori' rule
 		// 1. which matcher method can we use and how
@@ -31,13 +31,15 @@ public class SecurityConfig {
 		var uds = new InMemoryUserDetailsManager();
 		var u1 = User.withUsername("park")
 				.password(passwordEncoder().encode("1234"))
-				.authorities("read").build();
+				.roles("ADMIN") // equivalent to 'ROLE_ADMIN' authority
+				.build();
 		
 		uds.createUser(u1);
 		
 		var u2 = User.withUsername("will")
 				.password(passwordEncoder().encode("1234"))
-				.authorities("write").build();
+				.roles("MANAGER")
+				.build();
 		
 		uds.createUser(u2);
 		return uds;
