@@ -18,11 +18,12 @@ public class SecurityConfig {
 		return http.httpBasic()
 				.and()
 				.authorizeRequests()
-					.anyRequest()
-					.access("isAuthenticated() and hasAuthority('ROLE_ADMIN')") //SpEL
+					.mvcMatchers("/demo").hasAuthority("read")
+					.anyRequest().authenticated()
 				.and().build();
 		// matcher method + authori' rule
 		// 1. which matcher method can we use and how
+		//    : anyRequest(), mvcMatchers(), antMatchers(), regexMatchers()
 		// 2. how apply different authori' rules
 	}
 	
@@ -31,7 +32,7 @@ public class SecurityConfig {
 		var uds = new InMemoryUserDetailsManager();
 		var u1 = User.withUsername("park")
 				.password(passwordEncoder().encode("1234"))
-				.roles("ADMIN") // equivalent to 'ROLE_ADMIN' authority
+				.authorities("read")
 				.build();
 		
 		uds.createUser(u1);
