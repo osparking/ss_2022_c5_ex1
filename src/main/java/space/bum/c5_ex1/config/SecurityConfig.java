@@ -19,8 +19,11 @@ public class SecurityConfig {
 				.and()
 				.authorizeRequests()
 					.anyRequest() // matcher method
-						.authenticated() //authorization rule
+						.permitAll()
 				.and().build();
+		// matcher method + authori' rule
+		// 1. which matcher method can we use and how
+		// 2. how apply different authori' rules
 	}
 	
 	@Bean
