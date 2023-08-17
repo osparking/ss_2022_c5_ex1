@@ -19,7 +19,7 @@ public class SecurityConfig {
 				.and()
 				.authorizeRequests()
 					.anyRequest() // matcher method
-						.permitAll()
+						.hasAuthority("read")
 				.and().build();
 		// matcher method + authori' rule
 		// 1. which matcher method can we use and how
@@ -33,7 +33,7 @@ public class SecurityConfig {
 				.password(passwordEncoder().encode("1234"))
 				.authorities("read").build();
 		
-		uds.createUser(u1);
+		uds.createUser(u1);		
 		return uds;
 	}
 	
